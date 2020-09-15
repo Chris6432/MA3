@@ -63,10 +63,10 @@ Note that the equalitiy in the second line is due to the fact that $\tau$ is a n
 	\end{itemize}
 	(Note that the third and fourth cases are actually the same). This proves that $H_\tau$ is a functor. Now, thirdly, we need to prove that $H_\tau$ respects the wanted commutative property. We have that
 	$$\begin{cases}
-		 H_\tau\circ\Id_\cC\times{0}(c)=H_\tau(c,0)=F(c), \\
-		 H_\tau\circ\Id_\cC\times{1}(c)=H_\tau(c,1)=G(c), \\
-		 H_\tau\circ\Id_\cC\times{0}(f)=H_\tau(f,0\leq0)=F(f), \\
-		 H_\tau\circ\Id_\cC\times{1}(f)=H_\tau(f,1\leq1)=G(f)
+		 H_\tau\circ\Id_\cC\times\{0\}(c)=H_\tau(c,0)=F(c), \\
+		 H_\tau\circ\Id_\cC\times\{1\}(c)=H_\tau(c,1)=G(c), \\
+		 H_\tau\circ\Id_\cC\times\{0\}(f)=H_\tau(f,0\leq0)=F(f), \\
+		 H_\tau\circ\Id_\cC\times\{1\}(f)=H_\tau(f,1\leq1)=G(f),
 	\end{cases}$$
 	for each $c\in\Ob\cC$ and $f\in\Mor\cC$. So the commutativity criterion is respected.\newpage
 	
@@ -93,7 +93,7 @@ Lastly, we need to prove that these associations are inverses of each other, i.e
 			\begin{cases}
 				F(f) = H(f,0\leq0) & \mathrm{if}\ p=0\leq0,\\
 				(\tau_H)_dF(f)=H(\Id_d,0\leq1)H(f,0\leq0)=H(f,0\leq1) & \mathrm{if}\ p=0\leq1,\\
-				G(f)  = H(f,1\leq1) & \mathrm{if}\ p=1\leq1..
+				G(f)  = H(f,1\leq1) & \mathrm{if}\ p=1\leq1.
 			\end{cases}
 		\end{align*}
 	We clearly see that $H_{\tau_H}$ is equal to $H$. Lastly, let $\tau\in\Nat(F,G)$. Then 
