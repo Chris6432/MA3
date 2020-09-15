@@ -1,0 +1,49 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt, a4paper, twoside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
+\usepackage{lmodern}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+
+\input{macrosMath}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+\title{Hand in 1}
+\author{Christophe Marciot}
+\maketitle
+
+\section*{Exercise 6}
+Suppose we have a natural transformation $\tau:F\rightarrow G$. We want to associate to $\tau$ a functor $H_\tau:\cC\times[1]\rightarrow\cD$ in a meaningful way. In fact we want that this association to remind us of the notion of homotopy in regular homotopy theory. \\
+We propose the follwing definition. For an object $(c,x)\in \Ob\cC\times[1]$ and an arrow $(f,p)\in \Ob\cC\times[1]((c,x),(c',x'))$ we set their image by $H_\tau$:
+	\begin{align*}
+		H_\tau(c,x)=
+			\begin{cases}
+				F(c) &  \mathrm{if}\ x=0,\\
+				G(c) & \mathrm{if}\ x=1
+			\end{cases}
+	\end{align*}
+and 
+	\begin{align*}
+		H_\tau(f,p)=
+			\begin{cases}
+				F(f)  & \mathrm{if}\ p=0\leq0,\\
+				\tau_{c'}F(f)=G(f)\tau_c & \mathrm{if}\ p=0\leq1,\\
+				G(f) & \mathrm{if}\ p=1\leq1.
+			\end{cases}
+	\end{align*}
+Note that the equalitiy in the second line is due to the fact that $\tau$ is a natural transformation. First, we need to prove that $H_\tau$ is a functor.\\
+Let us consider the identity $\Id_{(c,x)}$. We want to prove that $H_\tau(\Id_{(c,x)})=\Id_{H_\tau(c,x)}$. We distinguish two cases:\\
+	
+
+
+
+\end{document}

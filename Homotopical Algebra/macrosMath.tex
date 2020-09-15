@@ -1,0 +1,148 @@
+% environments
+\newtheorem{thm}{Theorem}[subsection]
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{thmi}{Theorem}     % separate numbering for the introduction
+\newtheorem{conji}{Conjecture} % separate numbering for the introduction
+\newtheorem{claimi}{Claim} % separate numbering
+
+\theoremstyle{definition} 
+\newtheorem{defin}[thm]{Definition}
+\newtheorem{cons}[thm]{Construction}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{variant}[thm]{Variant}
+\newtheorem{example}[thm]{Example}
+
+% script letters
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathscr B}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathscr D}
+\newcommand{\cE}{\mathscr E}
+\newcommand{\cF}{\mathscr F}
+\newcommand{\cG}{\mathscr G}
+\newcommand{\cH}{\mathscr H}
+\newcommand{\cI}{\mathscr I}
+\newcommand{\cJ}{\mathscr J}
+\newcommand{\cK}{\mathscr K}
+\newcommand{\cL}{\mathscr L}
+\newcommand{\cM}{\mathscr M}
+\newcommand{\cN}{\mathscr N}
+\newcommand{\cO}{\mathscr O}
+\newcommand{\cP}{\mathscr P}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathscr S}
+\newcommand{\cQ}{\mathscr Q}
+\newcommand{\cT}{\mathscr T}
+\newcommand{\cU}{\mathscr U}
+\newcommand{\cW}{\mathscr W}
+\newcommand{\cX}{\mathscr X}
+\newcommand{\cY}{\mathscr Y}
+\newcommand{\cZ}{\mathscr Z}
+
+% boldface letters
+\newcommand{\bb}[1]{\mathbf{#1}} 
+\newcommand{\FF}{\bb{F}}
+\newcommand{\GG}{\bb{G}}
+\newcommand{\NN}{\bb{N}}
+\newcommand{\PP}{\bb{P}}
+\newcommand{\QQ}{\bb{Q}}
+\newcommand{\RR}{\bb{R}}
+\newcommand{\ZZ}{\bb{Z}}
+\newcommand{\bt}{\mathbf}
+
+%raccourcis
+\newcommand{\depth}{\mathrm{depth}}
+\newcommand{\height}{\mathrm{ht}}
+\newcommand{\Id}{\mathrm{Id}}
+\newcommand{\Mcomp}{M_{\bullet}}
+\newcommand{\Ncomp}{N_{\bullet}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\cechC}{\mathrm{\textit{\v{C}}}}
+\newcommand{\cechH}{\mathrm{\textit{\v{H}}}}
+\newcommand{\injdim}{\mathrm{injdim}}
+\newcommand{\pd}{\mathrm{pd}}
+\newcommand{\aideal}{\mathfrak{a}}
+\newcommand{\mideal}{\mathfrak{m}}
+\newcommand{\nideal}{\mathfrak{n}}
+\newcommand{\pideal}{\mathfrak{p}}
+\newcommand{\qideal}{\mathfrak{q}}
+\newcommand{\rank}{\mathrm{rank}}
+
+
+% symbols
+\renewcommand{\phi}{\varphi}
+\newcommand{\isom}{\simeq} 
+\newcommand{\piet}{\pi^{\acute{e}t}_{1}}
+\newcommand{\et}{{\rm\acute{e}t}}
+\newcommand{\cat}[1]{{\normalfont\textbf{#1}}}  % categories
+\newcommand{\ra}{\longrightarrow}    % to be used instead of \to in displayed formulas
+\newcommand{\isomto}{\xrightarrow{\,\smash{\raisebox{-0.65ex}{\ensuremath{\scriptstyle\sim}}}\,}}
+\renewcommand{\bigwedge}{\mbox{\large $\wedge$}}
+
+
+% operators
+\DeclareMathOperator{\Alb}{Alb}
+\DeclareMathOperator{\Art}{\cat{Art}} 
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Bl}{Bl}
+\DeclareMathOperator{\Def}{Def}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Gr}{Gr}
+
+%basic stuff
+\newcommand{\tens}[1]{%
+  \mathbin{\mathop{\otimes}\displaylimits_{#1}}%
+}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\Sing}{Sing}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Ass}{Ass}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Nil}{Nil}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\Ob}{Ob}
+% sheaf Hom etc
+\newcommand{\cExt}{{\mathscr E}\kern -.5pt xt}
+\newcommand{\cHom}{\mathscr{H}\kern -.5pt om}
+\newcommand{\cEnd}{{\mathscr E}nd}
+
+% other
+\newcommand{\stacksproj}[1]{{\cite[Tag~\href{http://stacks.math.columbia.edu/tag/#1}{#1}]{stacks-project}}}
+
+% tildes
+% - for uppercase letters X Y Z F D U R A ... use \wt X etc
+% - for lowercase letters \pi ... use \swt \pi 
+% - with the exception of "f" and "s" (used in one proof), where I used \tilde
+% - for script I, R (ideal used in section 3.4) use \wtcI, \wtcR
+% - for complex expressions e.g. X\times Y use \widetilde{...}
+
+\newcommand{\wt}[1]{{\mathchoice%
+  {\raisebox{1.5ex}{\resizebox{1.7ex}{!}{{}\hphantom{i}\ensuremath{{\sim}}}} \hspace{-1.7ex}{#1}}%
+  {\smash{\raisebox{1.5ex}{\resizebox{1.7ex}{!}{{}\hphantom{i}\ensuremath{{\sim}}}}\hspace{-1.7ex}{#1 }}\vphantom{\tilde I}}%
+  {\raisebox{1.1ex}{\resizebox{1.3ex}{!}{{}\hphantom{i}\ensuremath{{\sim}}}}\hspace{-1.3ex}{#1}}%
+  {\raisebox{0.8ex}{\resizebox{1ex}{!}{{}\hphantom{i}\ensuremath{{\sim}}}}\hspace{-1ex}{#1}}%
+}}
+
+\newcommand{\swt}[1]{{\mathchoice%
+  {\raisebox{0.9ex}{\resizebox{1.2ex}{!}{\ensuremath{{\sim}}}}\hspace{-1.4ex}{#1}}%
+  {\smash{\raisebox{0.9ex}{\resizebox{1.2ex}{!}{\ensuremath{{\sim}}}}\hspace{-1.4ex}{#1 }}\vphantom{I}}%
+  {\raisebox{0.7ex}{\resizebox{0.8ex}{!}{\ensuremath{{\sim}}}}\hspace{-0.9ex}{#1}}%
+  {\raisebox{0.5ex}{\resizebox{1ex}{!}{{}\hphantom{i}\ensuremath{{\sim}}}}\hspace{-1ex}{#1}}%
+}}
+
+\newcommand{\wtcI}{\smash{\raisebox{1.5ex}{\hspace{0.7ex}\resizebox{1.2ex}{!}{\ensuremath{{\sim}}}}\hspace{-2.1ex}{\cI}}\vphantom{I}}
+
+\newcommand{\wtcR}{\smash{\raisebox{1.5ex}{\hspace{0.7ex}\resizebox{1.2ex}{!}{\ensuremath{{\sim}}}}\hspace{-2.1ex}{\cR}}\vphantom{I}}

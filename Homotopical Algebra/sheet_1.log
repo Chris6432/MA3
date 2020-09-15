@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7380 64-bit) (preloaded format=pdflatex 2020.4.21)  15 SEP 2020 17:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7380 64-bit) (preloaded format=pdflatex 2020.4.21)  15 SEP 2020 18:40
 entering extended mode
-**"./template redac exo.tex"
-("template redac exo.tex"
+**./sheet_1.tex
+(sheet_1.tex
 LaTeX2e <2020-02-02> patch level 5
 L3 programming layer <2020-04-06>
 ("C:\Users\Christophe Marciot\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\
@@ -239,88 +239,94 @@ Package: amsthm 2017/10/31 v2.20.4
 pen\mathrsfs.sty"
 Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
 \symrsfs=\mathgroup6
+) (macrosMath.tex
+\c@thm=\count197
+\c@thmi=\count198
+\c@conji=\count199
+\c@claimi=\count266
 )
 ("C:\Users\Christophe Marciot\AppData\Local\Programs\MiKTeX 2.9\tex/latex/l3bac
 kend\l3backend-pdfmode.def"
 File: l3backend-pdfmode.def 2020-03-12 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count197
+\l__kernel_color_stack_int=\count267
 \l__pdf_internal_box=\box47
-) ("template redac exo.aux")
-\openout1 = `"template redac exo.aux"'.
+)
+No file sheet_1.aux.
+\openout1 = `sheet_1.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 17
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 19
 .
 
 ("C:\Users\Christophe Marciot\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\t1
 lmr.fd"
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Info: Redefining \degres on input line 17.
-LaTeX Info: Redefining \dots on input line 17.
-LaTeX Info: Redefining \up on input line 17.
+LaTeX Info: Redefining \degres on input line 19.
+LaTeX Info: Redefining \dots on input line 19.
+LaTeX Info: Redefining \up on input line 19.
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 2
-0.
+2.
 
 ("C:\Users\Christophe Marciot\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\ot
 1lmr.fd"
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 2
-0.
+2.
 
 ("C:\Users\Christophe Marciot\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\om
 llmm.fd"
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-20.
+22.
 
 ("C:\Users\Christophe Marciot\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\om
 slmsy.fd"
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-20.
+22.
 
 ("C:\Users\Christophe Marciot\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\om
 xlmex.fd"
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 20.
+(Font)              <12> on input line 22.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 20.
+(Font)              <8> on input line 22.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 20.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 20.
+(Font)              <6> on input line 22.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 22.
 
 
 ("C:\Users\Christophe Marciot\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfo
 nts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 20.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 22.
 
 
 ("C:\Users\Christophe Marciot\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfo
 nts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 20
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 22
 .
 
 ("C:\Users\Christophe Marciot\AppData\Local\Programs\MiKTeX 2.9\tex/latex/jknap
@@ -328,37 +334,49 @@ pen\ursfs.fd"
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 22.
- [1
+(Font)              <10.95> on input line 25.
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--45
+
+ []
+
+[1
 
 {C:/Users/Christophe Marciot/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
-] ("template redac exo.aux") ) 
+] (sheet_1.aux) ) 
 Here is how much of TeX's memory you used:
- 3349 strings out of 480896
- 48471 string characters out of 2891884
- 289862 words of memory out of 3000000
- 19198 multiletter control sequences out of 15000+200000
- 559343 words of font info for 54 fonts, out of 3000000 for 9000
+ 3508 strings out of 480896
+ 49098 string characters out of 2891884
+ 294566 words of memory out of 3000000
+ 19356 multiletter control sequences out of 15000+200000
+ 565340 words of font info for 56 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 32i,6n,35p,333b,426s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Users/Christophe Marciot/AppData/Local/Progra
-ms/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Users/Christophe Marciot/App
-Data/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/Chris
-tophe Marciot/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C
-:/Users/Christophe Marciot/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm
-/lm-ec.enc}<C:/Users/Christophe Marciot/AppData/Local/Programs/MiKTeX 2.9/fonts
-/type1/public/lm/lmmi10.pfb><C:/Users/Christophe Marciot/AppData/Local/Programs
-/MiKTeX 2.9/fonts/type1/public/lm/lmmi8.pfb><C:/Users/Christophe Marciot/AppDat
-a/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr10.pfb><C:/Users/Christoph
-e Marciot/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr12.pfb><C:
-/Users/Christophe Marciot/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
-lm/lmr17.pfb><C:/Users/Christophe Marciot/AppData/Local/Programs/MiKTeX 2.9/fon
-ts/type1/public/lm/lmsy10.pfb><C:/Users/Christophe Marciot/AppData/Local/Progra
-ms/MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb><C:/Users/Christophe Marciot/AppD
-ata/Local/Programs/MiKTeX 2.9/fonts/type1/public/rsfs/rsfs10.pfb>
-Output written on "template redac exo.pdf" (1 page, 98528 bytes).
+ 32i,15n,35p,304b,426s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Users/Christophe Marciot/AppData/Local/Programs/MiKTeX 2.9
+/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/Christophe Marciot/AppData/Local/Pr
+ograms/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/Christophe Marciot/App
+Data/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Users/Chris
+tophe Marciot/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathex.en
+c}{C:/Users/Christophe Marciot/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvip
+s/lm/lm-ec.enc}<C:/Users/Christophe Marciot/AppData/Local/Programs/MiKTeX 2.9/f
+onts/type1/public/lm/lmbx12.pfb><C:/Users/Christophe Marciot/AppData/Local/Prog
+rams/MiKTeX 2.9/fonts/type1/public/lm/lmex10.pfb><C:/Users/Christophe Marciot/A
+ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmmi10.pfb><C:/Users/Chr
+istophe Marciot/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmmi6.p
+fb><C:/Users/Christophe Marciot/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
+ublic/lm/lmmi8.pfb><C:/Users/Christophe Marciot/AppData/Local/Programs/MiKTeX 2
+.9/fonts/type1/public/lm/lmr10.pfb><C:/Users/Christophe Marciot/AppData/Local/P
+rograms/MiKTeX 2.9/fonts/type1/public/lm/lmr12.pfb><C:/Users/Christophe Marciot
+/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr17.pfb><C:/Users/Ch
+ristophe Marciot/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr8.p
+fb><C:/Users/Christophe Marciot/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
+ublic/lm/lmsy10.pfb><C:/Users/Christophe Marciot/AppData/Local/Programs/MiKTeX 
+2.9/fonts/type1/public/lm/lmsy6.pfb><C:/Users/Christophe Marciot/AppData/Local/
+Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb><C:/Users/Christophe Marcio
+t/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/rsfs/rsfs10.pfb>
+Output written on sheet_1.pdf (1 page, 135050 bytes).
 PDF statistics:
- 44 PDF objects out of 1000 (max. 8388607)
+ 65 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
