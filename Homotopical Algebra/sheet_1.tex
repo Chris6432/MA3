@@ -5,11 +5,19 @@
 \usepackage[T1]{fontenc}
 \usepackage[francais]{babel}
 \usepackage{lmodern}
+\usepackage[margin=0.8in]{geometry}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 
 \input{macrosMath}
 
@@ -40,10 +48,58 @@ and
 				G(f) & \mathrm{if}\ p=1\leq1.
 			\end{cases}
 	\end{align*}
-Note that the equalitiy in the second line is due to the fact that $\tau$ is a natural transformation. First, we need to prove that $H_\tau$ is a functor.\\
-Let us consider the identity $\Id_{(c,x)}$. We want to prove that $H_\tau(\Id_{(c,x)})=\Id_{H_\tau(c,x)}$. We distinguish two cases:\\
+Note that the equalitiy in the second line is due to the fact that $\tau$ is a natural transformation.\\
+ First, we need to prove that $H_\tau$ is a functor. Let us consider the identity $\Id_{(c,x)}=(\Id_c,x\leq x)$. We want to prove that $H_\tau(\Id_{(c,x)})=\Id_{H_\tau(c,x)}$. We distinguish two cases:
+ 	\begin{itemize}
+		\item[$\bullet$] \underline{If $x=0$}: Then we get that $H_\tau(\Id_{(c,0)})=H_\tau(Id_c,0\leq0)=F(\Id_c)=\Id_{F(c)}=\Id_{H_\tau(c,0)}.$
+		\item[$\bullet$] \underline{If $x=1$}: Then we get that $H_\tau(\Id_{(c,1)})=H_\tau(Id_c,1\leq1)=G(\Id_c)=\Id_{G(c)}=\Id_{H_\tau(c,1)}.$
+	\end{itemize}
+ Note that the third equalities are given by the fact that $F$ and $G$ are functors. Secondly, we need to prove that $H_\tau$ respects composition. Suppose we have $\xymatrix{(c,x)\ar[r]^{(f,p)}& (c',x')\ar[r]^{(f',p')}& (c'',x'')}$. We consider the following cases:
+ 	\begin{itemize}
+		\item[$\bullet$] \underline{If $p=p'=0\leq0$}: We have $$H_\tau((f',0\leq0)(f,0\leq0))=H_\tau(f'f,0\leq0)=F(f'f)=F(f')F(f)=H_\tau(f',0\leq0)H_\tau(f,0\leq0).$$
+		\item[$\bullet$] \underline{If $p=p'=1\leq0$}: We have $$H_\tau((f',1\leq1)(f,1\leq1))=H_\tau(f'f,1\leq1)=F(f'f)=F(f')F(f)=H_\tau(f',1\leq1)H_\tau(f,1\leq1).$$
+		\item[$\bullet$] \underline{If $p=0\leq0$ and $p'=0\leq1$}: We have $$H_\tau((f',0\leq1)(f,0\leq0))=H_\tau(f'f,0\leq1)=\tau_{c''}F(f'f)=(\tau_{c''}F(f'))F(f)=H_\tau(f',0\leq1)H_\tau(f,0\leq0).$$
+		\item[$\bullet$] \underline{If $p=0\leq1$ and $p'=1\leq1$}:  We have $$H_\tau((f',1\leq1)(f,0\leq1))=H_\tau(f'f,0\leq1)=G(f'f)\tau_{c}=G(f')(G(f)\tau_{c})=H_\tau(f',1\leq1)H_\tau(f,0\leq1).$$
+	\end{itemize}
+	(Note that the third and fourth cases are actually the same). This proves that $H_\tau$ is a functor. Now, thirdly, we need to prove that $H_\tau$ respects the wanted commutative property. We have that
+	$$\begin{cases}
+		 H_\tau\circ\Id_\cC\times{0}(c)=H_\tau(c,0)=F(c), \\
+		 H_\tau\circ\Id_\cC\times{1}(c)=H_\tau(c,1)=G(c), \\
+		 H_\tau\circ\Id_\cC\times{0}(f)=H_\tau(f,0\leq0)=F(f), \\
+		 H_\tau\circ\Id_\cC\times{1}(f)=H_\tau(f,1\leq1)=G(f)
+	\end{cases}$$
+	for each $c\in\Ob\cC$ and $f\in\Mor\cC$. So the commutativity criterion is respected.\newpage
 	
-
-
-
+Now, let $H\in\Fun_{F,G}(\cC\times[1],\cD)$. We want to associate to $H$ a natural transformation $\tau_H$ from $F$ to $G$. The natural thing to do seems to set $(\tau_H)_c=H(\Id_c,0\leq1)$ for each $c\in\Ob\cC$.We then need to show that this defines a natural transformation. Let $c,d\in\Ob\cC$ and $f\in\cC(c,d)$. We need to show that 
+	\begin{displaymath}
+		\xymatrix{
+			F(c) \ar[r]^{(\tau_H)_c} \ar[d]_{F(f)} & G(c) \ar[d]^{G(f)}\\
+			F(d) \ar[r]_{(\tau_H)_d} & G(d)
+		}
+	\end{displaymath}
+commutes. This said we have that 
+	\begin{displaymath}
+		G(f)(\tau_H)_c=H(f,1\leq1)H(\Id_c,0\leq1)=H(f,0\leq1)=H(\Id_d,0\leq1)H(f,0\leq0)=(\tau_H)_dF(f)
+	\end{displaymath} 
+and thus the diagram commutes and we have that $\tau_H$ is a natural transformation.\\\\
+Lastly, we need to prove that these associations are inverses of each other, i.e. $H_{\tau_H}=H$ for each $H\in\Fun_{F,G}(\cC\times[1],\cD)$ and $\tau_{H_\tau}=\tau$ for each $\tau\in\Nat(F,G)$. For $H\in\Fun_{F,G}(\cC\times[1],\cD)$, $(c,x),(d,y)\in\Ob\cC\times[1]$ and $(f,p)\in\Ob\cC\times[1]((c,x),(d,y))$, we have that 
+	\begin{align*}
+		H_{\tau_H}(c,x) &=
+			\begin{cases}
+				F(c)=H(c,0) & \mathrm{if}\ x=0,\\
+				G(c)=H(c,1) & \mathrm{if}\ x=1.
+			\end{cases}\\
+		H_{\tau_H}(f,p) &=
+			\begin{cases}
+				F(f) = H(f,0\leq0) & \mathrm{if}\ p=0\leq0,\\
+				(\tau_H)_dF(f)=H(\Id_d,0\leq1)H(f,0\leq0)=H(f,0\leq1) & \mathrm{if}\ p=0\leq1,\\
+				G(f)  = H(f,1\leq1) & \mathrm{if}\ p=1\leq1..
+			\end{cases}
+		\end{align*}
+	We clearly see that $H_{\tau_H}$ is equal to $H$. Lastly, let $\tau\in\Nat(F,G)$. Then 
+		\begin{displaymath}
+			(\tau_{H_\tau})_c=H_\tau(\Id_c,0\leq1)=\tau_c
+		\end{displaymath}
+			for each $c\in\Ob\cC$ and thus we get that $\tau_{H_\tau}$ is equal to $\tau$. We can then conclude that those assignations are inverses to each other and define bijective maps between $\Nat(F,G)$ and $\Fun_{F,G}(\cC\times[1],\cD)$.
+	
 \end{document}
