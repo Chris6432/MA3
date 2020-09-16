@@ -70,7 +70,14 @@ Note that the equalitiy in the second line is due to the fact that $\tau$ is a n
 	\end{cases}$$
 	for each $c\in\Ob\cC$ and $f\in\Mor\cC$. So the commutativity criterion is respected.\newpage
 	
-Now, let $H\in\Fun_{F,G}(\cC\times[1],\cD)$. We want to associate to $H$ a natural transformation $\tau_H$ from $F$ to $G$. The natural thing to do seems to set $(\tau_H)_c=H(\Id_c,0\leq1)$ for each $c\in\Ob\cC$.We then need to show that this defines a natural transformation. Let $c,d\in\Ob\cC$ and $f\in\cC(c,d)$. We need to show that 
+Now, let $H\in\Fun_{F,G}(\cC\times[1],\cD)$. We want to associate to $H$ a natural transformation $\tau_H$ from $F$ to $G$. The natural thing to do seems to set $(\tau_H)_c=H(\Id_c,0\leq1)$ for each $c\in\Ob\cC$. Note that the commutative properties of elements of $\Fun_{F,G}(\cC\times[1],\cD$) gives that the domain and the codomain of $(\tau_H)_c$ are 
+	\begin{align*}
+	\dom(\tau_H)_c =& \dom H(\Id_c,0\leq1) = \dom \{H(\Id_c,0\leq1)H(\Id_c,0\leq0)\} \\
+				    =& \dom H(\Id_c,0\leq0) = \dom F(\Id_c) = \dom\Id_{F(c)} = F(c),\\
+	\cod(\tau_H)_c =& \cod H(\Id_c,0\leq1) = \cod \{H(\Id_c,1\leq1)H(\Id_c,0\leq1)\}\\
+				   =& \cod H(\Id_c,1\leq1) = \cod G(\Id_c) = \cod\Id_{G(c)} = G(c)
+	\end{align*}
+	and so $(\tau_H)_c$ is indeed a morphism from $F(c)$ to $G(c)$. We then need to show that this defines a natural transformation. Let $c,d\in\Ob\cC$ and $f\in\cC(c,d)$. We need to show that 
 	\begin{displaymath}
 		\xymatrix{
 			F(c) \ar[r]^{(\tau_H)_c} \ar[d]_{F(f)} & G(c) \ar[d]^{G(f)}\\

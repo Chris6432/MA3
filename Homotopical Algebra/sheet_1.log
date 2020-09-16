@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7380 64-bit) (preloaded format=pdflatex 2020.4.21)  15 SEP 2020 21:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7380 64-bit) (preloaded format=pdflatex 2020.4.21)  16 SEP 2020 09:59
 entering extended mode
 **./sheet_1.tex
 (sheet_1.tex
@@ -697,16 +697,16 @@ m/m/it/10.95 H[]\OT1/lmr/m/n/10.95 (\OML/lmm/m/it/10.95 f[]; \OT1/lmr/m/n/10.95
 
 {C:/Users/Christophe Marciot/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 ] <xymatrix 2x2 182>
-Underfull \hbox (badness 10000) in paragraph at lines 83--86
+Underfull \hbox (badness 10000) in paragraph at lines 90--93
 
  []
 
 [2] (sheet_1.aux) ) 
 Here is how much of TeX's memory you used:
- 8745 strings out of 480896
- 125520 string characters out of 2891884
- 433933 words of memory out of 3000000
- 24435 multiletter control sequences out of 15000+200000
+ 8749 strings out of 480896
+ 125534 string characters out of 2891884
+ 433961 words of memory out of 3000000
+ 24439 multiletter control sequences out of 15000+200000
  566789 words of font info for 65 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  34i,15n,35p,3220b,426s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -735,7 +735,7 @@ iot/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/rsfs/rsfs10.pfb><C:/Us
 ers/Christophe Marciot/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/xyp
 ic/xyatip10.pfb><C:/Users/Christophe Marciot/AppData/Local/Programs/MiKTeX 2.9/
 fonts/type1/public/xypic/xybtip10.pfb>
-Output written on sheet_1.pdf (2 pages, 164290 bytes).
+Output written on sheet_1.pdf (2 pages, 164759 bytes).
 PDF statistics:
  76 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
