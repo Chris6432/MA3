@@ -1,0 +1,132 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt, a4paper, twoside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
+\usepackage{lmodern}
+\usepackage[margin=0.8in]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\input{macrosMath}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+\title{Homotopical Algebra\\ Hand in 2}
+\author{Christophe Marciot}
+\maketitle
+
+\section*{Notation:}
+From now on in this document, we will use the followind notation. For $\xymatrix{c'\ar[r]^{f} & c}\in\Ob\cC/c$, we will note $(c',f)$ and $(c'',h,c')\in\cC((c'',g),(c',f))$ for every morphisms from $(c'',g)$ to $(c',f)$ 
+\begin{displaymath}
+	\xymatrix{
+		c'' \ar[rd]_g \ar[rr]^h & & c' \ar[ld]^f\\
+		& c
+	}
+\end{displaymath}
+This may be a confusing notation since it does not contain the information of $f$ or $g$, but it will be made clear from context.
+
+\section*{Exercise 7:}
+\subsection*{Part (a):}
+
+Let $d\in\Ob\cD$ and let us define the functor $\bar{G}:\cD/d\ra\cC/G(d)$. We set $\bar{G}(d',f)=(G(d'),G(f))$ on objects of $\cD/d$ and $\bar{G}((d'',h,d'))=(G(d''),G(h),G(d'))$ for the a morphism from $(d'',g)$ to$(d',f)$. Observe that $(G(d''),G(h),G(d'))$ is indeed a morphism since we have that the commutativity of the diagram 
+\begin{displaymath}
+	\xymatrix{
+		d'' \ar[rd]_g \ar[rr]^h & & d' \ar[ld]^f\\
+		& d
+	}
+\end{displaymath}
+implies the commutativity of the diagram
+\begin{displaymath}
+	\xymatrix{
+		G(d'') \ar[rd]_{G(g)} \ar[rr]^{G(h)} & & {G(d')} \ar[ld]^{G(f)}\\
+		& G(d)
+	}
+\end{displaymath}
+  Now we need to prove that this defines a functor. Let us compute the image of $\Id_{(d',f)}$ for $(d',f)\in\Ob\cD/d$. We have 
+\begin{displaymath}
+	\bar{G}(\Id_{(d',f)})=(G(d'),G(\Id_{d'}),G(d'))=(G(d'),\Id_{G(d')},G(d'))=\Id_{\bar{G}(d',f)}.
+\end{displaymath}
+	Now let us compute the image of a composition. For $(d''',i,d'')$ and $(d'',j,d')$, we have 
+\begin{align*}
+	\bar{G}((d'',j,d')(d''',i,d''))  =&   \bar{G}(d''',ji,d')\\
+							=& (G(d'''),G(ji),G(d'))\\
+	                                      =& (G(d'''),G(j)G(i),G(d'))\\
+	                                      =& (G(d''),G(j),G(d'))(G(d'''),G(i),G(d''))\\
+	                                      =& \bar{G}(d'',j,d')\bar{G}(d''',i,d'').
+\end{align*}
+This allows to say that $\bar{G}$ is a functor.
+
+\subsection*{Part (b):}
+
+As we know that the pair $(F,G)$ is a pair of adjoint functors, we know there exists a natural isomorphism
+\begin{displaymath}
+	\tau:\cC(-,G(-))\Longrightarrow\cD(F(-),-).
+\end{displaymath}
+We set the following functor $\bar{F}:\cC/G(d)\ra\cD/d$ the following way. On the objects, we set $\bar{F}(c,f)=(F(c),\tau_{(c,d)}(f))$ and on morphisms $\bar{F}(c',h,c)=(F(c'),F(h),F(c))$ for a morphism form $(c,f)$ to $(c',g)$. We need now to prove that $(F(c'),F(h),F(c))$ is indeed a morphism from $(F(c'),\tau_{(c',d)}(g))$ to $(F(c),\tau_{(c,d)}(f))$, i.e. we need to prove that the triangle
+\begin{displaymath}
+	\xymatrix{
+		F(c') \ar[rd]_{\tau_{(c',d)}(g)} \ar[rr]^{F(h)} & & F(c) \ar[ld]^{\tau_{(c,d)}(f)}\\
+		& d
+	} 
+\end{displaymath}
+Note first that since $(c',h,c)$ is a morphism from $(c,f)$ to $(c',g)$, we have $fh=g$. The fact that $\tau$ is a natural transformation gives us that 
+\begin{align*}
+	\cD(F(-),-)(h^{op},\Id_d)\tau_{(c,d)}(f)&=\Id_d\tau_{(c,d)}(f)F(h)=\tau_{(c,d)}(f)F(h)  \\
+	\tau_{(c',d)}\cC(-,G(-))(h^{op},\Id_d)(f)&=\tau_{(c',d)}(G(\Id_d)fh)=\tau_{(c',d)}(fh)=\tau_{(c'd)}(g)
+\end{align*}
+	those two ligns are equal and so we conclude that the last triangle commutes.\\
+Now we need to prove that $\bar{F}$ is a functor. First consider $\Id_{(c,f)}$ and let us compute its image. We have 
+\begin{align*}
+	\bar{F}(\Id_{(c,f)})=(F(c),F(\Id_{F(c)},F(c)))=\Id_{F(c)}=\Id_{\bar{F}(c,f)}.
+\end{align*}
+Let us compute the image of a composition. Suppose, we have $(c'',i,c')$ and $(c',j,c)$. Then 
+\begin{align*}
+	\bar{F}((c',j,c)(c'',i,c'))&=\bar{F}(c'',ji,c)\\
+						&= (F(c''),F(ji),F(c))\\
+						&= (F(c''),F(j)F(i),F(c))\\
+						&= (F(c''),F(j),F(c'))(F(c'))(F(c'),F(i),F(c))\\
+						&= \bar{F}(c'',j,c')\bar{F}(c',i,c)
+\end{align*}
+	and thus we conclude that $\bar{F}$ is a functor. What is left is to prove that the pair $(\bar{F},\bar{G})$ is a pair of adjoint functors. Let $(c,f)\in\Ob\cC/G(d)$ and $(d',g)\in\Ob\cD$. We would like to find a map from $\cC/G(d)((c,f),(G(d'),G(g)))$ to $\cD/d((F(c),\tau_{(c,d)}(f)),(d',g))$, that is if we have the commutative triangle 
+\begin{displaymath}
+	\xymatrix{
+		c \ar[rd]_f \ar[rr]^h & & G(d') \ar[ld]^{G(g)}\\
+		& G(d)
+	} 
+\end{displaymath}
+we would like to send $h$ to a map $\bar{h}$ such that the triangle 
+\begin{displaymath}
+	\xymatrix{
+		F(c) \ar[rd]_{\tau_{(c,d)}(f)} \ar[rr]^{\bar{h}} & & d' \ar[ld]^{g}\\
+		& d
+	} 
+\end{displaymath}
+commutes. Recall that since $\tau$ is a natural isomorphism, the square
+\begin{displaymath}
+	\xymatrix{
+		\cC(G(d'),G(d')) \ar[rr]^{\tau_{(G(d'),d')}} \ar[d]_{\bar{\cC}(h^{op},g)} & & \cD(FG(d'),d') \ar[d]^{\bar{\cD}(h^{op},g)}\\
+		\cC(c',G(d)) \ar[rr]_{\tau_{(c,d)}} & & \cD(F(c'),d)
+	}
+\end{displaymath}
+commutes, where $\bar{\cC}=\cC(-,G(-))$ and $\bar{\cD}=\cD(F(-),-)$. Note that we then have that 
+\begin{align*}
+	\tau_{(c,d)}(f) =& \tau_{(c,d)}(G(g)h)= \tau_{(c,d)}\bar{\cC}(h^{op},g)(\Id_{G(d')})\\
+				   =& \bar{\cD}(h^{op},g)\tau_{(G(d'),d')}(\Id_{G(d')})\\
+				   =& g\tau_{(G(d'),d')}(\Id_{G(d')})F(h)
+\end{align*}
+and so our guess is $\bar{h}=\tau'F(h)$, where $\tau'=\tau_{(G(d'),(d'))}$. Let us denote the family of maps obtained by $\theta_{((c,f),(d',g)}$ and let us denote by $\theta$ the natural transformation given by this family. %We called $\theta$ a natural transformation, but we actually still have to prove that it is one by showing that the square 
+\end{document}

@@ -1,0 +1,107 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt, a4paper, twoside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
+\usepackage{lmodern}
+\usepackage[margin=0.8in]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\input{macrosMath}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+\title{Hand in 1}
+\author{Christophe Marciot}
+\maketitle
+
+\section{Introduction}
+	In this document, we will consider sheaves on a fixed topological space $X$ if not precised otherwise.
+
+\subsection{Notation}
+	Let $\cF$ be a sheaf. For $p\in X$, we will use two different notations for the elements of $\cF_p$. The first one is $s_p$. The second one is $[(s,U)]$. This means that we have an neighbourhood of $p$, $U$, and an element $s\in\cF(U)$. Note that in the first notation, the existence of such a $U$ is implicit. That is why we will use the second notation when we need to explicitly describe $U$. Also we sometimes will write $[(s,U)]_p$ when it is not clear in what stalk we work.
+
+\subsection{Preliminary result}
+	\begin{prop}
+		Let $\phi:\cF\ra\cG$ be a morphism of sheaves. Then for each $s\in\cF(U)$ and $p\in U$, we have 
+			\begin{displaymath}
+				(\phi_U(s))_p=\phi_p(s_p).
+			\end{displaymath}
+	\end{prop}
+	\begin{proof}
+		Note that $s_p=[(s,U)]_p$ and so $\phi_p(s_p)=[(\phi_U(s),U)]$ and $(\phi_U(s))_p=[(\phi_U(s),U)]_p$ by definition.
+	\end{proof}
+
+
+
+
+\section{Homeworks}
+
+\subsection{Exercise 1.2., part (a)}
+	First, let us look at the kernel part. Let $[(s,U)]\in\Ker(\phi_p)$. Then we know that $[(\phi_U(s),U)]=0$ in $\cG_p$. in other words, we get that there exists $V_p\subset U$ neighbourhood of $p$ such that $\phi_U(s)\restr{V_p}=0$ in $\cG(V_p)$. Note that since $\phi$ is a morphism, we have that 
+	\begin{displaymath}
+		\phi_{V_p}(s\restr{V_p})=\phi_U(s)\restr{V_p}=0
+	\end{displaymath}
+	and thus $s\restr{V_p}\in(\Ker\phi)(V_p)$. We then get that $[(s\restr{V_p},V_p)]=[(s,U)]\in(\Ker\phi)_p$. We then 		conclude that $\Ker(\phi_p)\subset(\Ker\phi)_p$. Now let $[(s,U)]\in(\Ker\phi)_p$. Note that $s\in(\Ker\phi)(U)=\Ker\phi_U$. We then observe that 
+	\begin{displaymath}
+		\phi_p(s_p)=(\phi_U(s))_p=0\ \mathrm{in}\ \cG_p
+	\end{displaymath}
+	adn thus $[(s,U)]\in\Ker\phi_p$. This allows us to conclude that $\Ker\phi_p=(\Ker\phi)_p$.\\
+	Now let us look at the image sheaf. One has 
+	\begin{align*}
+		[(t,V)]\in\im\phi_p &\iff \exists [(s,U)]\in\cF_p\ \mathrm{s.th.}\ \phi_p(s_p)=t_p\\
+						  &\iff \exists [(s,U)]\in\cF_p\ \mathrm{s.th.}\ [(\phi_U(s),U)]=[(t,V)]\\
+						  &\iff \exists [(s,U)]\in\cF_p\ \mathrm{s.th.}\ \exists W\subset U\cap V\ \mathrm{a\ neighbourhood\ of}\ p\ \mathrm{s.th.}\ \phi_U(s)\restr{W}=t\restr{W}\\
+						  &\iff \exists [(s,U)]\in\cF_p\ \mathrm{s.th.}\ \exists W\subset U\cap V\ \mathrm{a\ neighbourhood\ of}\ p\ \mathrm{s.th.}\ \phi_W(s\restr{W})=t\restr{W}\\
+						  &\iff \exists W\subset V\ \mathrm{a\ neighbourhood\ of}\ p\ \mathrm{s.th.}\ t\restr{W}\in\im\phi_W\\
+						  &\iff \exists W\subset V\ \mathrm{a\ neighbourhood\ of}\ p\ \mathrm{s.th.}\ [(t,V)]=[(t,W)]\in(\im\phi)_p\\
+	\end{align*}
+
+\subsection{Exercise 1.2., part (b)}
+	First let us investigate the injectivity. We recall that $\phi$ is injective if the kernel sheaf is trivial. Suppose that $\phi$ is injective. As $\Ker\phi=0$, we have 
+	\begin{displaymath}
+		\Ker\phi_p=(\Ker\phi)_p=0_p=0,\forall p\in X
+	\end{displaymath}
+	and so $\phi_p$ is injective for all $p\in X$. Now suppose that $\phi_p$ is injective for all $p\in X$. Let $U\subset X$ be an open set and let $s\in\Ker\phi(U)$. Then $s_p\in(\Ker\phi)_p=\Ker\phi_p$ for each $p\in U$ and thus $s_p=0$ for each $p\in U$. Note that this means that
+	\begin{displaymath}
+		\forall p\in U\exists V_p\subset U\ \mathrm{a\ neighbourhood\ of}\ p\ \mathrm{s.th.}\ s\restr{V_p}=0.
+	\end{displaymath}
+	Since the family $\{V_p\}_{p\in U}$ is an open cover of $U$ and $\cF$ is a sheaf, we get that $s=0$. We then conclude that the assertion holds.\\
+	Next let us investigate surjectivity. Recall that $\phi$ is surjective if $\im\phi=\cG$. Suppose that $\phi$ is surjective. Then 
+	\begin{displaymath}
+		\im\phi_p=(\im\phi)_p=\cG_p,\forall p\in X
+	\end{displaymath}
+	and thus $\phi_p$ is surjective for each $p\in X$. Now suppose that $\phi_p$ is surjective for each $p\in X$. Let us consider the inclusion morphism $\iota:\im\phi\ra\cG$. This morphisms at a given stalk is the inclusion map of the subgroup $(\im\phi)_p$ into the group $\cG_p$. Since $(\im\phi)_p=\im\phi_p=\cG_p$, because of the surjectivity of $\phi_p$, we get that $\iota_p$ is an isomorphism for each $p\in X$. Thus we get that $\iota$ is an isomorphism which means that $\im\phi=\cG$.
+	
+\subsection{Exercise 1.2., part (c)}
+	We have that 
+	\begin{align*}
+		\xymatrix{\cdots\ar[r]\ & \cF^{i-1} \ar[r]^{\phi^{i-1}} & \cF^{i} \ar[r]^{\phi^{i}} & \cF^{i+1} \ar[r] & \cdots}\ \mathrm{is\ an\ exact\ sequence\ of\ sheaves}\\ \iff \Ker\phi^{i}=\im\phi^{i-1},\forall i\in\Z\\
+												   \iff \phi^{i-1}:\cF^{i-1}\ra\Ker\phi^{i}\ \mathrm{is\ surjective},\forall i\in\Z\\
+												   \iff (\phi^{i-1})_p:(\cF^{i-1})_p\ra(\Ker\phi^{i})_p\ \mathrm{is\ surjective},\forall p\in X,\forall i\in\Z\\
+												   \iff (\im\phi^{i-1})_p=(\Ker\phi^{i})_p,\forall p\in X,\forall i\in\Z\\
+												   \iff \im\phi^{i-1}_p=\Ker\phi^{i}_p,\forall p\in X,\forall i\in\Z\\ 
+												   \iff \xymatrix{\cdots\ar[r]\ & \cF^{i-1}_p \ar[r]^{\phi^{i-1}_p} & \cF^{i}_p \ar[r]^{\phi^{i}_p} & \cF^{i+1}_p \ar[r] & \cdots}\ \mathrm{is\ an\ exact\ sequence\ of\ groups},\forall p\in X
+	\end{align*}
+
+
+
+
+
+
+
+\end{document}

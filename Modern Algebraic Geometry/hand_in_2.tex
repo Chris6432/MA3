@@ -1,0 +1,92 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt, a4paper, twoside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
+\usepackage{lmodern}
+\usepackage[margin=0.8in]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\input{macrosMath}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+\title{Modern Algebraic Geometry\\ Hand in 2}
+\author{Christophe Marciot}
+\maketitle
+
+\section*{Part (a):}
+We have to verify that $I_Y$ checks the gluing properties of a sheaf. If $s\in I_Y(U)$ and $\{V_i\}_{i\in I}$ is an open cover of $U$ sucht that $s\restr{V_i}=0$ for each $i$ then it is clear that $s=0$ as this property comes from the fact that $\sO_X$ is a sheaf. Now if we have $s_i\in I_Y(V_i)$, where $\{V_i\}_{i\in I}$ is again an open cover of $U$ such that $s_i\restr{V_{ij}}=s_j\restr{V_{ij}}$, we know we can glue back those $s_i$'s to some $s\in\sO_X(U)$. To see that $s$ is in fact in $I_Y(U)$, we observe that for $p\in U$, in particular $p\in V_i$ for some $i\in I$, we have 
+\begin{displaymath}
+	s(p)=s\restr{V_i}(p)=s_i(p)=0
+\end{displaymath} 
+since $s_i$ vanishes on $U\cap V_i$ and thus $s\in I_Y(U)$. We then conclude that $I_Y$ is a sheaf.
+
+\section*{Part (b):}
+Here we first begin by a remark. Note that for $f\in\sO_X(U)$, then for $p\in U$, one can associate $f_p$ with $f(p)$. Indeed, suppose that for $g\in\sO_X(V),p\in V$ such that $f_p=g_p$. Then we get that there exists a neighbourhood of $p$,$W\subseteq U\cap V$ such that $f\restr{W}=g\restr{W}$ and thus 
+\begin{displaymath}
+	f(p)=f\restr{W}(p)=g\restr{W}(p)=g(p).
+\end{displaymath}
+Now if $f(p)=g(p)$ we get that $(f-g)(p)=0$. Since $\Supp(f-g)$ is an open set, we know there exists a neighbourhood $U\subseteq\Supp(f-g)$ of $p$. This said, we get that $f\restr{U}=g\restr{U}$ and thus $f_p=g_p$.\\
+Now let us go back to the problem at hand. Let us define the morphism of sheaves 
+\begin{displaymath}
+	\phi_U:\sO_X(U)/I_Y(U)\ra(\iota_*\sO_Y)(U)=\sO(Y\cap U):\bar{f}\ra f\restr{Y\cap U},
+\end{displaymath}
+where $\bar{f}$ is the class of $f$ in $\sO_X(U)/I_Y(U)$. Note that if $\bar{f}=\bar{g}$, then $f=g+r$ with $r\in I_Y(U)$. Thus
+\begin{displaymath}
+	f\restr{Y\cap U}=(g+r)\restr{Y\cap U}=g\restr{Y\cap U}+r\restr{Y\cap U} = g\restr{Y\cap U}
+\end{displaymath}
+and thus $\phi_U$ is a well defined map. Note that these are homomorphisms of rings. To show that this is a morphism of sheaves, we go to the level of stlaks. Let $p\in X$. we distinguish two cases. If $p\notin Y$, then we have 
+\begin{displaymath}
+	I_{Y,p}= \lim\limits_{\ra p\in U}I_Y(U).
+\end{displaymath}
+Note that since $p\notin \bar{Y}=Y$, we know there exists a neighbourhood of $p$,$U$, such that $Y\cap U=\emptyset$. We then get that for each $p\in V\subseteq U$ open, one has $I_Y(V)=\sO_X(V)$ and thus, by te properties of the direct limit, we have that $I_{Y,p}=\sO_{X,p}$ and thus 
+\begin{displaymath}
+	(\sO_X/I_Y)_p=\sO_{X,p}/I_{Y,p}=\sO_{X,p}/\sO_{X,p}=0.
+\end{displaymath}
+Also note that for small enough neighbourhoods $U$ of $p$, we have
+\begin{displaymath}
+	(\iota_*\sO_Y)(U)=\sO_Y(Y\cap U)=\sO_Y(\emptyset)=0
+\end{displaymath}
+and thus
+\begin{displaymath} 
+	(\iota_*\sO_Y)_p=\lim\limits_{\ra p\in U}(\iota_*\sO_Y)(U)=\lim\limits_{\ra p\in U}\sO_Y(Y\cap U)=0.
+\end{displaymath}
+We then deduce that $\phi_p$ is an isomorphism. Now suppose that $p\in Y$. Since $p\in Y$, we know that $f(p)=0$  for all neighbourhoods $U$ of $p$ and $f\in I_Y(U)$ and thus we conclude that $I_{Y,p}=0$. Thus $\phi_p$ becomes
+\begin{displaymath}
+	\phi_p:\sO_{X,p}\ra\sO_{Y,p}:[(U,f)]\ra[(Y\cap U,f\restr{Y\cap U})]
+\end{displaymath}
+and thus $\phi_p$ is an isomorphism. This tells us that $\phi$ is an isomorphism.
+	
+	
+\section*{Part (c):}
+Let us consider $Y=\{p,q\}$. Recall that singletons are closed in $X$ and thus $Y$ is closed. We want to show that $\iota_*\sO_Y\isom\iota_*\sO_p\oplus\iota_*\sO_q$. We set 
+\begin{displaymath}
+	\phi_U:\sO_Y(Y\cap U)\ra\sO_p(\{p\}\cap U)\oplus\sO_q(\{q\}\cap U):f\ra(f\restr{\{p\}},f\restr{\{q\}}),
+\end{displaymath}
+By noting that $\iota_* \sO_{Y,x},\iota_* \sO_{p,x},\iota_* \sO_{q,x}=0$ if $x\neq p,q$, and $\iota_* \sO_{Y,p}=\iota_* \sO_{p,p}$ and $\iota_* \sO_{q,p}=0$, and $\iota_* \sO_{Y,q}=\iota_* \sO_{q,q}$ and $\iota_* \sO_{p,q}=0$, we see that $\phi$ is an isomorphism of sheaves. Note that $\phi_U$ and $\phi_p$ are ring homomorphisms for each $U\subseteq X$ open and $p\in X$. Also we note that $\sO_X(X)\isom k$. where $k$ is the undelying field (since $X$ is a projective variety) and $\cF(X)\isom k\oplus k$ and thus the morphism $\phi_X:\Gamma(X,\sO_X)\ra\Gamma(X,\cF)$ can not reach the zerodivisors of $k\oplus k$ (elements like $(1,0)$ for example) and we conclude that $\phi_X$ is not surjective.
+
+
+
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,86 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt, a4paper, twoside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
+\usepackage{lmodern}
+\usepackage[margin=0.8in]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\input{macrosMath}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+\title{Riemann Sufraces\\ Hand in 1}
+\author{Christophe Marciot}
+\maketitle
+
+\section*{Exercise 1}
+	Set $f(z)=\frac{az+b}{cz+d}$  where it is defined. Note that if $c=0$ then $d\neq0$ and $f(z)=\frac{a}{d}z+\frac{b}{d}$ is an affine map. If $c\neq0$ , one has $f=f_3\circ f_2\circ f_1$,where
+		\begin{align*}
+			f_1(z)&=cz+d,\\
+			f_2(z)&=\frac{1}{z},\\
+			f_3(z)&=\frac{bc-ad}{c}z+\frac{a}{c}.
+		\end{align*}
+	Now if we are able to show that afffine maps and $f_2$ send \emph{circles} to \emph{circles}. First let us investigate the case of affine maps. Let us set $g(z)=az+b,z=x+iy,a=\alpha+i\beta,b=\gamma+i\delta$. Note that we only care about the case where $a\neq0$. By computation, we obtain the following equation
+		\begin{align*}
+			u+iv=g(z)&=(\alpha+i\beta)(x+iy)+(\gamma+i\delta)\\
+				        &=(\alpha x- \beta y +\gamma)+i(\beta x+\alpha y +\delta)
+		\end{align*}
+	which is equivalent to the system 
+		$$\begin{cases}
+			u=\alpha x-\beta y+\gamma,\\
+			v=\beta x+\alpha y+\delta.
+		\end{cases}$$
+	We can inverse this system by the following computations 
+		\begin{align*}
+			\alpha u +\beta v=&\alpha^2x-\alpha\beta y+\alpha\gamma+\beta^2x+\alpha\beta y+\beta\delta\\
+						      =&(\alpha^2+\beta^2)x+\alpha\gamma+\beta\delta\\
+			&\iff\\
+			x 				=& \frac{\alpha}{\alpha^2+\beta^2}(u-\gamma)+\frac{\beta}{\alpha^2+\beta^2}(v-\delta),\\
+			\alpha v+\beta u =& (\alpha^2+\beta^2)y+\alpha\delta+\beta\gamma\\
+			&\iff\\
+			y				=& \frac{-\beta}{\alpha^2+\beta^2}(u-\gamma)+\frac{\alpha}{\alpha^2+\beta^2}(v-\delta)
+		\end{align*}
+	and we then get the system 
+		$$\begin{cases}
+			x = \frac{\alpha}{\alpha^2+\beta^2}(u-\gamma)+\frac{\beta}{\alpha^2+\beta^2}(v-\delta),\\
+			y = \frac{-\beta}{\alpha^2+\beta^2}(u-\gamma)+\frac{\alpha}{\alpha^2+\beta^2}(v-\delta).
+			\end{cases}$$
+	Remember that we want to show that $g$ sends \emph{circles} to \emph{circles}. We treat the two cases separately:\\\\
+	\underline{Case 1. $\lambda x+ \mu y = \nu$}, where $\lambda,\mu,\nu\in\RR$ and $\lambda$ or $\mu$ is nonzero (otherwise it would not be a line). We then get
+		\begin{align*}
+			\nu&= \lambda x+\mu y\\
+				&=\lambda[\frac{\alpha}{\alpha^2+\beta^2}(u-\gamma)+\frac{\beta}{\alpha^2+\beta^2}(v-\delta)]+\mu[\frac{-\beta}{\alpha^2+\beta^2}(u-\gamma)+\frac{\alpha}{\alpha^2+\beta^2}(v-\delta)]\\
+			     &= \frac{\lambda\alpha-\mu\beta}{\alpha^2+\beta^2}u+\frac{\mu\alpha+\lambda\beta}{\alpha^2+\beta^2}v-\frac{\lambda\alpha\gamma}{\alpha^2+\beta^2}-\frac{\lambda\beta\delta}{\alpha^2+\beta^2}+\frac{\mu\beta\gamma}{\alpha^2+\beta^2}-\frac{\mu\alpha\delta}{\alpha^2+\beta^2}\\
+			     &= \frac{\lambda\alpha-\mu\beta}{\alpha^2+\beta^2}u+\frac{\mu\alpha+\lambda\beta}{\alpha^2+\beta^2}v-c\\
+			\iff&\frac{\lambda\alpha-\mu\beta}{\alpha^2+\beta^2}u+\frac{\mu\alpha+\lambda\beta}{\alpha^2+\beta^2}v=\nu+c,
+		\end{align*}
+		where $c=\frac{\lambda\alpha\gamma+\lambda\beta\delta-\mu\beta\gamma+\mu\alpha\delta}{\alpha^2+\beta^2}$. Notice that this the equation of the line.\\\\
+	\underline{Case 2. $(x-x_0)^2+(y-y_0)^2=R^2$}, where $x_0,y_0\in\RR$ and $R>0$. Note that the system of equations above gives us the following one 
+		$$\begin{cases}
+			x_0 = \frac{\alpha}{\alpha^2+\beta^2}(u_0-\gamma)+\frac{\beta}{\alpha^2+\beta^2}(v_0-\delta),\\
+			y_0 = \frac{-\beta}{\alpha^2+\beta^2}(u_0-\gamma)+\frac{\alpha}{\alpha^2+\beta^2}(v_0-\delta).
+			\end{cases}$$
+		From this we can then compute what shape hase the image of this circle
+		\begin{align*}
+			R^2=& (x-x_0)^2+(y-y_0)^2\\
+				=& [\frac{\alpha}{\alpha^2+\beta^2}(u-\gamma)+\frac{\beta}{\alpha^2+\beta^2}(v-\delta)-\frac{\alpha}{\alpha^2+\beta^2}(u_0-\gamma)-\frac{\beta}{\alpha^2+\beta^2}(v_0-\delta)]^2\\
+				& + [\frac{-\beta}{\alpha^2+\beta^2}(u-\gamma)+\frac{\alpha}{\alpha^2+\beta^2}(v-\delta)-\frac{-\beta}{\alpha^2+\beta^2}(u_0-\gamma)-\frac{\alpha}{\alpha^2+\beta^2}(v_0-\delta)]^2\\
+				=& [\frac{\alpha}{\alpha^2+\beta^2}(u-u_0)+\frac{\beta}{\alpha^2+\beta^2}(v-v_0)]^2+[\frac{-\beta}{\alpha^2+\beta^2}(u-u_0)+\frac{\alpha}{\alpha^2+\beta^2}(v-v_0)]^2
+		\end{align*}
+\end{document}

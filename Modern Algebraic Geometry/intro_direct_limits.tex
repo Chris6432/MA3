@@ -1,0 +1,523 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt, a4paper, twoside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
+\usepackage{lmodern}
+\usepackage[margin=0.8in]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\input{macrosMath}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+\title{Introduction to direct limits}
+\maketitle
+
+After the introduction of the local cohomology, our next goal is to link those cohomologies to other more familiar objects like $\Ext$ groups. 
+For that, we'll need a tool coming directly  from category theory : The direct limit.
+
+\begin{defin}
+Let $(I,\leq)$ be a P.O. set. We view it as a category whose objects are the elements of $I$ with a unique morphism from $i$ to $j$ whenever $i\leq j$. The morphism will also be denoted $i\leq j$. Note that the composition is well defined ,since $(I,\leq)$ is a P.O. set, and that $i\leq i=\Id_i$.\\
+Let $\cA$ be a category. An \emph{$I$-diagram in $\cA$} is a covariant functor $\Phi:I\ra\cA$. We often write $A_i$ for $\Phi(i)$ and $\phi_{i,j}$ for $\Phi(i\leq j)$. Since $\Phi$ is a covariant functor, we have that $\Phi(i\leq i)=\Id_{A_i}$. We call the morphisms the \emph{structure morphisms} of the $I$-diagram
+\end{defin}
+\begin{defin}
+Let $\cA$ be a category and $\Phi$ be an $I$-diagram in $\cA$. The \emph{direct limit of $\Phi$} is an object $A$ of $\cA$ together with a morphims $\phi_i:A_i\ra A$ for each $i\in I$ such that the diagram
+\begin{displaymath}
+    \xymatrix{
+    A_i\ar[d]_{\phi_{i,j}}\ar[rrrd]^{\phi_i}\\
+    A_j\ar[rrr]_{\phi_j} & & &  A\\
+   }
+\end{displaymath}
+commutes for all $i\leq j$. Moreover, $A$ should be universal with respect to these properties. In other words, if $A'$ is an object of $\cA$ with morphisms $\psi_i:A_i\ra A'$ satisfying the commutative diagrams as above, there's a unique morphism $\theta\in\cA(A,A')$ such that for each $i$ the diagram below commutes :
+\begin{displaymath}
+    \xymatrix{
+    A_i\ar[dr]_{\phi_i}\ar[drrr]^{\psi_i}\\
+    & A\ar@{.>}[rr]_{\theta}  & & A'
+    }.
+\end{displaymath}
+The direct limit is denoted $\lim\limits_{\ra I}\Phi$ or $\lim\limits_{\ra I}A_i$ or just $\lim\limits_{\ra}A_i$ when it is clear that it is an $I$-diagram.
+\end{defin}
+\begin{prop}
+Direct limits, when they exist, are unique up to unique isomorphism compatible with the structure morphisms $\phi_i$.
+\end{prop}
+\begin{proof}
+    Let $\Phi$ be an $I$-diagram where $I$ is a P.O. set. now suppose that $A,A'=\lim\limits_{\ra I}\Phi$. Consider the families of morphisms $(\theta_i)_{i\in I}$ and $(\psi_i)_{i\in I}$ such that the diagrams
+    \begin{displaymath}
+        \xymatrix{
+            A_i\ar[d]_{\phi_{i,j}}\ar[drr]^{\theta_i}  & & & A_i\ar[d]_{\phi_{i,j}}\ar[drr]^{\psi_i}\\
+            A_j\ar[rr]_{\theta_j} & & A & A_j\ar[rr]_{\psi_j} & & A'
+        }
+    \end{displaymath}
+    commutes for each pair $i\leq j$. By the universal property of limits, we have unique morphisms $\Sigma_1$ and $\Sigma_2$ such that the diagrams
+    \begin{displaymath}
+        \xymatrix{
+            & A_i\ar[ld]_{\theta_i}\ar[rd]^{\psi_i} & & & & A_i\ar[ld]_{\psi_i}\ar[rd]^{\theta_i} \\
+            A\ar[rr]_{\Sigma_1} & & A' & & A'\ar[rr]_{\Sigma_2} & & A
+        }
+    \end{displaymath}
+    commute for each $i\in I$. Since these morphisms are unique for this property, showing that they're isomorphisms suffice. By these commutativities, we get that $$\Sigma_1\circ\Sigma_2\psi_i=\Sigma_1\circ\theta_i=\psi_i.$$ This implies that 
+    \begin{displaymath}
+        \xymatrix{
+            & A_i\ar[rd]_{\psi_i}\ar[ld]^{\psi_i}\\
+            A'\ar[rr]_{\Sigma_1\circ\Sigma_2} & & A'
+        }
+    \end{displaymath}
+    commutes for each $i\in I$. But since the diagram 
+    \begin{displaymath}
+        \xymatrix{
+            & A_i\ar[rd]_{\psi_i}\ar[ld]^{\psi_i}\\
+            A'\ar[rr]_{\Id_{A'}} & & A'
+        }
+    \end{displaymath}
+    also commutes, the universal property of direct limits tells us that $$\Sigma_1\circ\Sigma_2=\Id_{A'}.$$ By the same argument, we can show that $$\Sigma_2\circ\Sigma_1=\Id_A.$$ This shows that $\Sigma_1$ and $\Sigma_2$ are isomorphisms.
+\end{proof}
+\begin{example}
+Consider a family of $R$-modules $\{M_j\}_{j\in\N}$ such that $M_j\subseteq M_{j+1}$. Here we can consider it as a $\N$-diagram with the structure morphisms $\iota_{i,j}:M_i\ra M_j$ are just the inclusion morphisms.\\
+We set $M=\bigcup_{j\in\N}M_j$ and $\iota_i:M_i\ra M$ to be the inclusion. $M$ is clearly an $R$-module and $\iota_i$ is a morphism for each $i$. We can compute the composition to see that the diagram 
+\begin{displaymath}
+    \xymatrix{
+        M_i\ar[d]_{\iota_{i,j}}\ar[rrrd]^{\iota_i}\\
+        M_j\ar[rrr]_{\iota_j} & & &  M\\
+    }
+\end{displaymath}
+commutes. To prove that indeed $\lim\limits_{\ra j}M_j=M$ we still need to prove that it satisfies the universal property.\\
+Suppose $M'$ is $R$-module and $\psi_i:M_i\ra M'$ morphisms for each $i$ compatible with the structure morphisms. We define $\theta:M\ra M'$ the following way : 
+\begin{displaymath}
+    m\in M\implies m\in M_t\ \mathrm{for\ some}\ t\in\N.\ \mathrm{We\ then\ set}\ \theta(m)=\psi_t(m)
+\end{displaymath}
+The fact that $\theta$ is well defined comes directly from the fact that the $\psi_i$ are compatible with the structure morphisms that are just the inclusions. Indeed, suppose $m\in M$ is such that $m\in M_i$ and $m\in M_j$, where $i\leq j$. Then, since the diagram 
+\begin{displaymath}
+    \xymatrix{
+    M_i\ar[d]_{\iota_{i,j}}\ar[rrrd]^{\psi_i}\\
+    M_j\ar[rrr]_{\psi_j} & & &  M'\\
+    }
+\end{displaymath}
+commutes, we get that 
+\begin{displaymath}
+    \psi_j(m)=\psi_j\circ\iota_{i,j}(m)=\psi_i(m).
+\end{displaymath}
+Also we get that since the $\psi_i$ are morphisms, $\theta$ also is one. By definition of $\theta$, we see that the diagram
+\begin{displaymath}
+    \xymatrix{
+    M_i\ar[dr]_{\iota_i}\ar[drrr]^{\psi_i}\\
+    & M\ar@{.>}[rr]_\theta  & & M'
+    }
+\end{displaymath}
+commutes for each $i$. Also $\theta$ is unique for this property since if we have $\theta':M\ra M'$ that respects the desired properties, we get that 
+\begin{displaymath}
+    \mathrm{For}\ m\in M_i, \theta'(m)=\theta'\circ\iota_i(m)=\psi_i(m)=\theta(m).
+\end{displaymath}
+Thus we do get that $$\lim\limits_{\ra\N}M_n=\bigcup_{n\in\N}M_n$$
+This example tells us that direct limits of some systems are really simple objects.
+\end{example}
+\begin{remark}\label{remark:union_limit}
+Note that by taking an increasing chain of $R$-modules and considering it as a $\Z$-diagram $\{M_n\}_{n\in\Z}$ also with the structure morphisms to be the inclusions, we get that $$\lim\limits_{\ra \Z}M_n=\bigcup_{n\in\Z}M_n$$  
+\end{remark}
+\begin{prop}
+Let $M$ be a $R$-module and $x$ be an element of $R$. We consider the following $\N$-diagram :
+\begin{enumerate}
+    \item $M_i=M$ for each $i\in\N$
+    \item For $i\leq j$ we define $\phi_{i,j}=[\cdot x^{j-i}]$
+\end{enumerate}
+Then $\lim\limits_{\ra \N}M_t=M_x$.
+\end{prop}
+\begin{proof}
+We set $\phi_j=\Big[\cdot \frac{1}{x^j}\Big]$ and check the compatibility. We see clearly that the diagram 
+\begin{displaymath}
+    \xymatrix{
+    M_i=M\ar[d]_{[\cdot x^{j-i}]}\ar[rrrd]^{\Big[\cdot \frac{1}{x^i}\Big]}\\
+    M_j\ar[rrr]_{\Big[\cdot \frac{1}{x^j}\Big]} & & &  M'\\
+    }
+\end{displaymath}
+commutes once we describe explicitly what the transformations are. We still have to verify the universal property to declare that $M_x$ is the direct limit of the system.\\
+Suppose we have an $R$-module $M'$ and a family of morphism $\psi_i:M_i\ra M'$ such that for every $i\leq j$ the diagram :
+\begin{displaymath}
+    \xymatrix{
+    M_i=M\ar[d]_{[\cdot x^{j-i}]}\ar[rrrd]^{\psi_i}\\
+    M_j=M\ar[rrr]_{[\cdot x^j]} & & &  M'\\
+    }
+\end{displaymath}
+commutes. Then we define $\Psi:M_x\ra M'$ the following way :
+\begin{displaymath}
+    \mathrm{For}\ \frac{m}{x^t}\in M_x, \Psi\bigg(\frac{m}{x^t}\bigg)=\psi_t(m).
+\end{displaymath}
+First, we need to check that $\Psi$ is a well defined function. Suppose that $\frac{m}{x^j}=\frac{n}{x^k}$. By definition of the localization, we get that there is an natural integer $t$ such that 
+\begin{displaymath}
+    x^t(x^km-x^jn)=0.
+\end{displaymath}
+That said, we get that 
+\begin{align*}
+    \Psi\bigg(\frac{m}{x^j}\bigg)=\psi_j(m)=\psi_{j+k+t}(x^{k+t}m)=\psi_{j+k+t}(x^{j+t}n)&=\Psi\bigg(\frac{n}{x^k}\bigg)\\
+    \Leftrightarrow f_{j+k+t}(x^t(x^km-x^jn))=f_{j+k+t}(0)&=0
+\end{align*}
+which confirms that $\Psi$ is well defined. Now we just need to show that it's a morphism. Here we suppose that $j\leq k$. 
+\begin{align*}
+    \Psi\bigg(\frac{m}{x^j}+\frac{n}{x^k}\bigg)\ &=\ \Psi\bigg(\frac{x^{k-j}m+n}{x^k}\bigg)\\
+                                       &=\ \psi_k(x^{k-j}m+n)\\
+                                       &=\ \psi_k(x^{k-j}m)+\psi_k(n)\\
+                                       &=\ \psi_j(m)+\psi_k(n)\\
+                                       &=\ \Psi\bigg(\frac{m}{x^j}\bigg)+\Psi\bigg(\frac{n}{x^k}\bigg).
+\end{align*}
+This gives us that $\Psi$ is morphism and for $j\in\N$ we have
+\begin{displaymath}
+    \mathrm{For}\ m_j\in M_j,\Psi\circ\Big[\cdot \frac{1}{x^j}\Big](m_j)=\Psi\bigg(\frac{m_j}{x^j}\bigg)=\psi_j(m_j)
+\end{displaymath}
+which tells us that the diagram 
+\begin{displaymath}
+    \xymatrix{
+        M_j\ar[dr]_{\Big[\cdot \frac{1}{x^j}\Big]}\ar[drrr]^{\psi_i}\\
+        & M\ar@{.>}[rr]_{\Psi}  & & M'
+    }
+\end{displaymath}
+commutes. Also the unicity of $\Psi$ for the desired property is pretty obvious.\newline
+\end{proof}
+\begin{prop}
+Let $(I,\leq)$ be a P.O. set and $\Phi$ be an $I$-diagram in the category of $R$-modules. Let $E$ be the submodule of $\bigoplus_I A_i$ spanned by 
+\begin{displaymath}
+\{g\in\bigoplus A_i\ |\ \mathrm{for\ some}\ i\leq j ,g(j)=-\phi_{i,j}(g(i))\ \mathrm{and}\ g(t)=0,\ \mathrm{for}\ t\neq i,j\}.    
+\end{displaymath}
+Then $\lim\limits_{\ra I}A_i=\bigoplus A_i/E$ with the morphisms $\phi_j=\pi\circ\iota_j$, where $\iota_j:A_j\ra\bigoplus A_i$ is the standard embedding and $\pi:\bigoplus A_i\ra\bigoplus A_i/E$ is the canonical projection.
+\end{prop}
+\begin{proof}
+Let $i\leq j$ and set for $a_i\in A_i$, set $g=\iota_j\circ\phi_{i,j}(a_i)$ and $g'=\iota_i(a_i)$. Then 
+\begin{displaymath}
+\phi_j\circ\phi_{i,j}(a_i)=[g]=[g']=\phi_i(a_i)\Leftrightarrow g'-g\in E.
+\end{displaymath}
+But from the definition of $g$ and $g'$ we get that
+\begin{displaymath}
+\begin{cases}
+    (g'-g)(j)=g'(j)-g(j)=0-\phi_{i,j}(a_i)=-\phi_{i,j}(a_i)=-\phi_{i,j}((g'-g)(i))\\
+    (g'-g)(t)=g'(t)-g(t)=0-0=0\ \mathrm{if}\ t\neq i,j
+\end{cases}
+\end{displaymath}
+which tells us exactly that $(g'-g)\in E$ and that the diagram 
+\begin{displaymath}
+    \xymatrix{
+    A_i\ar[d]_{\phi_{i,j}}\ar[rrrd]^{\phi_i}\\
+    A_j\ar[rrr]_{\phi_j} & & &  \bigoplus A_i/E\\
+    }
+\end{displaymath}
+commutes. Now suppose we have an $R$-module $A$ with morphisms $f_i:A_i\ra A$ that are compatible with the system. We then set $\Psi:\bigoplus A_i/E\ra A$ the following way :
+\begin{displaymath}
+    \mathrm{For}\ [g]\in\bigoplus A_i/E,\ \Psi([g])=\sum_If_i(g(i)).
+\end{displaymath}
+Note that since $g\in\bigoplus A_i$, the sum is finite. We still have to check that $\Psi$ is a well defined function. Suppose $[g]=[g']$. Then we get that
+\begin{displaymath}
+    \Psi([g])=\sum f_i(g(i))=\sum f(g'(i))=\Psi([g'])\Leftrightarrow\sum f_i((g-g')(i))=0.
+\end{displaymath}
+Since $[g]=[g']$, we have some data on $(g-g')$, namely
+\begin{displaymath}
+\begin{cases}
+    (g-g')(k)=-\phi_{j,k}((g-g')(j)\ \mathrm{for\ some}\ j\leq k\\
+    (g-g')(t)=0\ \mathrm{if}\ t\neq j,k
+\end{cases}
+\end{displaymath}
+which tells us that 
+\begin{align*}
+    \sum\limits(f_i((g-g')(i))\ &=\ f_j((g-g')(j))+f_k((g-g')(k)\\
+    &=\ f_j((g-g')(j))+f_k(-\phi_{j,k}((g-g')(j)))\\
+    &=\ f_j((g-g')(j))-f_j((g-g')(j))\\ 
+    &=\ 0
+\end{align*}
+and that $\Psi$ is well defined. Also it is pretty clear that $\Psi$ is a morphism. We also get that for $j\in I$, we have that 
+\begin{displaymath}
+    \mathrm{For}\ a_j\in A_j, \Psi\circ\phi_j(a_j)=\sum_{i\in I}f_i(\iota_j(a_j)(i))=f_j(a_j)
+\end{displaymath}
+which tells us that the diagram 
+\begin{displaymath}
+    \xymatrix{
+     A_j\ar[dr]_{\phi_j}\ar[drrr]^{f_j}\\
+    & \bigoplus A_i\ar@{.>}[rr]_{\Psi}  & & A
+    }
+\end{displaymath}
+commutes. The unicity of $\Psi$  is also pretty obvious.
+\end{proof}
+\begin{remark}
+This proposition is important as it gives us as a fact  that every $I$-diagram in the category of $R$-modules admit a direct limit for every P.O. set $(I,\leq)$ and a way to compute it.
+\end{remark}
+
+\begin{defin}
+Let $(I,\leq)$ be a P.O. set and $R$ be a ring. We define the \emph{category of $I$-diagrams in the category of $R$-modules}, denoted $\mathfrak{Dir}_I^R$, whose objects are the $I$-diagrams in the category of $R$-modules and the morphisms are just the natural transformations from an $I$-diagram to an other, i.e for two $I$-diagrams $\Phi$ and $\Phi'$ a morphism is given by a family of morphisms $\nu=\{\nu_i:A_i\ra A'_i\}_{i\in I}$ such that for each pair $i\leq j$ the diagram
+\begin{displaymath}
+    \xymatrix{
+    A_i\ar[rr]^{\nu_i}\ar[d]_{\phi_{i,j}} & & A'_i\ar[d]^{\phi'_{i,j}}\\
+    A_j\ar[rr]_{\nu_j} && A'_j
+    }
+\end{displaymath}
+commutes.
+\end{defin}
+\begin{defin}
+Let $(I,\leq)$ be a P.O. set and $R$ be a ring. A \emph{chain complex of $I$-diagrams in the category of $R$-modules} is a sequence of $I$-diagrams together with morphims of $I$-diagrams\\ $\Phi_{\bullet}=\big(\Phi_{(n)},\nu_{(n)}:\Phi_{(n)}\ra\Phi_{(n-1)}\big)_{n\in\Z}$ such that $\nu_n\circ\nu_{n+1}=0$ for each $n\in\Z$. We define \emph{cochain complexes of $I$-diagrams in the category of $R$-modules} an analogous way with increasing indices. uch a sequence is said to be \emph{exact} if the sequences 
+\begin{displaymath}
+    \xymatrix{
+        \cdots\ar[rr]^{\nu^{i}_{(n+2)}} & & \Phi_{(n+1)}\ar[rr]^{\nu^{i}_{(n+1)}} & & \Phi_{(n)}\ar[rr]^{\nu^{i}_{(n)}} & & \Phi_{(n-1)}\ar[rr]^{\nu^{i}_{(n-1)}} & & \cdots
+    }
+\end{displaymath}
+are exact for each $i\in I$.
+\end{defin}
+\begin{thm}
+Let $R$ be a ring, $\cR$ be the category of $R$-modules and $(I,\leq)$ be a P.O. set.\\
+Then we have that $\lim\limits_{\ra}:\mathfrak{Dir}^R_I\ra\cR$ is a left exact additive covariant functor. 
+\end{thm}
+
+\begin{defin}
+Let $(I,\leq)$ be a P.O. set. We say that $I$ is \emph{filtered} if for each $i,j\in I$, there exists $k\in I$ such that $i,j\leq k$. We can also use the word \emph{directed} instead of filtered.
+\end{defin}
+\begin{lemma}
+Let $I$ be a filtered P.O. set. Let $R$ be a ring and $\cR$ be the category of $R$-modules. Let $\Phi$ be an $I$-diagram in $\cR$. Let $a$ be an element in $\bigoplus_IA_i$ and $[a]$ its image in $\lim\limits_{\ra}\Phi$. Then :
+\begin{enumerate}
+    \item There exists $i\in I$ in $I$ and an element $a_i\in A_i$ such that $\phi_i(a_i)=[a]$.
+    \item Write $a=(a_i)\in\bigoplus_IA_i$. Then $[a]=0$ if and only if there exists an index $t$ such that $a_i=0$ when $i\nleqslant t$ and $\sum_{j\leq t}\phi_{j,t}(a_j)=0$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+    See Lemma 4.32 from \cite{principal}
+\end{proof}
+\begin{thm}
+    Let $I$ be a filtered P.O. set, $R$ a ring, and $\cR$ be the category of $R$-modules. \\
+    Then the functor $\lim\limits_{\ra}:\mathfrak{Dir}^R_I\ra\cR$ is exact
+\end{thm}
+\begin{proof}
+    See Theorem 4.33 from \cite{principal} for a proof.
+\end{proof}
+\begin{cor}
+Let 
+\begin{displaymath}
+    \xymatrix{
+        \cdots\ar[rr]^{\nu^{(n-2)}} & &  \Phi^{(n-1)}\ar[rr]^{\nu^{(n-1)}} & &  \Phi^{(n)}\ar[rr]^{\nu^{(n)}} & &  \Phi^{(n+1)}\ar[rr]^{\nu^{(n+1)}} & &\cdots
+    }
+\end{displaymath}
+be an exact sequence of $I$-diagrams. Then the sequence 
+\begin{displaymath}
+    \xymatrix{
+        \cdots\ar[rr]^{\lim\limits_{\ra}\nu^{(n-2)}} & & \lim\limits_{\ra}\Phi^{(n-1)}\ar[rr]^{\lim\limits_{\ra}\nu^{(n-1)}} & & \lim\limits_{\ra}\Phi^{(n)}\ar[rr]^{\lim\limits_{\ra}\nu^{(n)}} & &  \lim\limits_{\ra}\Phi^{(n+1)}\ar[rr]^{\lim\limits_{\ra}\nu^{(n+1)}} & & \cdots
+    }
+\end{displaymath}
+is an exact sequence of $R$-modules.
+\end{cor}
+\begin{proof}
+     This a direct consequence of the last theorem.
+\end{proof}
+
+\begin{defin}
+Let 
+\begin{displaymath}
+    \xymatrix{
+        \cdots\ar[rr]^{\nu^{(n-2)}} & &  \Phi^{(n-1)}\ar[rr]^{\nu^{(n-1)}} & &  \Phi^{(n)}\ar[rr]^{\nu^{(n)}} & &  \Phi^{(n+1)}\ar[rr]^{\nu^{(n+1)}} & &\cdots
+    }
+\end{displaymath}
+be a sequence of $I$-diagrams. For $n\in\Z$ and $i\leq j$, we define 
+\begin{displaymath}
+    H^{(n)}_j=\mathrm{Ker}\thinspace\nu^{(n)}/\mathrm{Im}\thinspace\nu^{(n-1)}
+\end{displaymath}
+and maps $[\phi_{i,j}]:H^{(n)}_i\ra H^{(n)}_j$ the following way :
+\begin{displaymath}
+    \mathrm{For}\ [a]\in H^{(n)}_i,\ \Big[\phi^{(n)}_{i,j}\Big]([a])=\Big[\phi_{i,j}^{(n)}(a)\Big].
+\end{displaymath}
+\end{defin}
+\begin{prop}
+The previously defined $\Big[\phi^{(n)}_{i,j}\Big]$ are morphisms of $R$-modules.
+\end{prop}
+\begin{proof}
+    First we need to show that for $a\in \mathrm{Ker}\thinspace\nu^{(n)}_i$, we have that $\phi^{(n)}_{i,j}(a)\in \mathrm{Ker}\thinspace\nu^{(n)}_i$.\\
+    By the definition of morphisms of $I$-diagrams, we that the following diagram
+    \begin{displaymath}
+        \xymatrix{
+            \Phi^{(n)}(i)\ar[rr]^{\phi^{(n)}_{i,j}}\ar[d]_{\nu^{(n)}_i} & & \Phi^{(n)}(j)\ar[d]^{\nu^{(n)}_j}\\
+            \Phi^{(n+1)}(i)\ar[rr]_{\phi^{(n+1)}_{i,j}} & & \Phi^{(n+1)}(j)
+        }
+    \end{displaymath}
+    commutes.Thus we get that 
+    \begin{displaymath}
+        \nu^{(n)}_j\circ\phi^{(n)}_{i,j}(a)=\phi^{(n+1)}_{i,j}\circ\nu^{(n)}_i(a)=\phi^{(n+1)}_{i,j}(0)=0
+    \end{displaymath}
+    and hence we get that $\phi^{(n)}_{i,j}(a)\in \mathrm{Ker}\thinspace\nu^{(n)}_j$. Next we need to prove that for $b\in \mathrm{Im}\thinspace\nu^{(n-1)}$, $\Big[\phi^{(n)}_{i,j}(b)\Big]=0$.\\
+    We write $b=\nu^{(n-1)}_i(a)$ for $a\in\Phi^{(n)}(i)$. Again by the definition of $I$-diagrams, we have that the diagram
+    \begin{displaymath}
+        \xymatrix{
+            \Phi^{(n-1)}(i)\ar[rr]^{\nu^{(n-1)}_i}\ar[d]_{\phi^{(n-1)}_{i,j}} & & \Phi^{(n)}(i)\ar[d]^{\phi^{(n)}_{i,j}}\\
+            \Phi^{(n-1)}(j)\ar[rr]_{\nu^{(n-1)}_j} & & \Phi^{(n)}(j)
+        }        
+    \end{displaymath}
+    commutes. Thus we get that 
+    \begin{displaymath}
+        \phi^{(n)}_{i,j}(b)=\phi^{(n)}_{i,j}\circ\nu^{(n-1)}_i(a)=\nu^{(n-1)}_j\circ\phi^{(n-1)}_{i,j}(a)\in \mathrm{Im}\thinspace\nu^{(n-1)}_j
+    \end{displaymath}
+    and hence $\Big[\phi^{(n)}_{i,j}(b)\Big]=0$. This proves that $\Big[\phi^{(n)}_{i,j}\Big]$ is a well defined map. The fact that it's a morphism comes directly from the fact that $\phi^{(n)}_{i,j}$ is already one.
+\end{proof}
+\begin{prop}
+The previously defined $H^{(n)}_i$ together with the morphisms $\Big[\phi^{(n)}_{i,j}\Big]$ form an $I$-diagram in the category of $R$-modules.
+\end{prop}
+\begin{proof}
+    This is easily seen when computing that for $i\leq j\leq k$ we get that
+    \begin{displaymath}
+        \Big[\phi^{(n)}_{j,k}\Big]\circ\Big[\phi^{(n)}_{i,j}\Big]=\Big[\phi^{(n)}_{j,k}\circ\phi^{(n)}_{i,j}\Big]=\Big[\phi^{(n)}_{i,k}\Big].
+    \end{displaymath}
+\end{proof}
+\begin{thm}
+Let $\Phi^{\bullet}=\Big(\Phi^{(n)},\ \nu^{(n)}:\Phi^{(n)}\ra\Phi^{(n+1)}\Big)_{n\in\Z}$ be a cochain complex of\\ $I$-diagrams in the category of $R$-modules. We set 
+\begin{displaymath}
+    \lim\limits_{\ra}\Phi^{\bullet}=\Big(\lim\limits_{\ra}\Phi^{(n)},\lim\limits_{\ra}\nu^{(n)}\Big)_{n\in\Z}
+\end{displaymath}
+which is a complex of $R$-modules.\\
+Then we get that for $n\in\Z$ we have
+\begin{displaymath}
+    \lim\limits_{\ra}H^{(n)}_i\cong H^n\Big(\lim\limits_{\ra}\Phi\Big)=\mathrm{Ker}\thinspace\lim\limits_{\ra}\nu^{(n)}/\mathrm{Im}\thinspace\lim\limits_{\ra}\nu^{(n-1)}.
+\end{displaymath}
+\end{thm}
+\begin{proof}
+    For $i\in I$, let $\phi_i:\Phi^{(n)}_i\ra\lim\limits_{\ra}\Phi^{(n)}$ be the morphisms that come with the direct limit.
+    We define, for each $i\in I$,  $\Big[\phi_i^{(n)}\Big]:H^{(n)}_i\ra H^n\Big(\lim\limits_{\ra}\Phi\Big)$ the following way : 
+    \begin{displaymath}
+        \mathrm{For}\ [a]\in H^{(n)}_i,\ \Big[\phi_i^{(n)}\Big]([a])=\Big[\phi_i^{(n)}(a)\Big].
+    \end{displaymath}
+    We need to show that it's a well defined morphism. The first step is to prove that 
+    \begin{displaymath}
+        a\in\mathrm{Ker}\thinspace\nu^{(n)}_i\implies\phi^{(n)}_i(a)\in\mathrm{Ker}\thinspace\lim\limits_{\ra}\nu^{(n)}.
+    \end{displaymath}
+    To achieve that we use the fact that the diagram 
+    \begin{displaymath}
+        \xymatrix{
+        \Phi^{(n)}(i)\ar[rr]^{\phi_i^{(n)}}\ar[d]_{\nu^{(n)}_i} & & \lim\limits_{\ra}\Phi^{(n)}\ar[d]^{\lim\limits_{\ra}\nu^{(n)}}\\
+        \Phi^{(n+1)}(i)\ar[rr]_{\phi_i^{(n+1)}} & & \lim\limits_{\ra}\Phi^{(n+1)}
+        }
+    \end{displaymath}
+    commutes. This gives us that for $a\in\mathrm{Ker}\thinspace\nu^{(n)}_i$
+    \begin{displaymath}
+        \lim\limits_{\ra}\nu^{(n)}\circ\phi_i^{(n)}(a)=\phi^{(n+1)}_i\circ\nu^{(n)}_i(a)=\phi_i^{(n+1)}(0)=0\implies\phi^{(n)}_i(a)\in\mathrm{Ker}\thinspace\lim\limits_{\ra}\nu^{(n)}.
+    \end{displaymath}
+    Let $b\in\mathrm{Im}\thinspace\nu^{(n-1)}_i$. Next we need to show that   
+    \begin{displaymath}
+        b\in\mathrm{Im}\thinspace\nu^{(n-1)}_i\implies\phi^{(n)}_i(b)\in\mathrm{Im}\thinspace\lim\limits_{\ra}\nu^{(n-1)}.
+    \end{displaymath}
+    Setting $b=\nu^{(n-1)}_i(a)$ for $a\in\Phi^{(n-1)}(i)$, we use the fact that the following diagram 
+    \begin{displaymath}
+        \xymatrix{
+            \Phi^{(n-1)}(i)\ar[rr]^{\nu^{(n-1)}_i}\ar[d]_\phi^{(n-1)}_i & & \Phi^{(n)}(i)\ar[d]^{\phi_i^{(n)}}\\
+            \lim\limits_{\ra}\Phi^{(n-1)}\ar[rr]_{\lim\limits_{\ra}\nu^{(n-1)}} && \lim\limits_{\ra}\Phi^{(n)}
+        }
+    \end{displaymath}
+    commutes and we can say that 
+    \begin{displaymath}
+        \phi^{(n)}_i(b)=\phi^{(n)}_i\circ\nu^{(n-1)}_i(a)=\lim\limits_{\ra}\nu^{(n-1)}\circ\phi^{(n-1)}_i(a)\in\mathrm{Im}\thinspace\lim\limits_{\ra}\nu^{(n-1)}.
+    \end{displaymath}
+    This show us that the $\Big[\phi_i^{(n)}\Big]$ are well defined maps. The fact that they're morphisms comes directly from the fact that the $\phi_i^{(n)}$ are already morphisms themselves. Also by computing we easily see that for each pair $i\leq j$ the diagram
+    \begin{displaymath}
+        \xymatrix{
+            H_i^{(n)}\ar[d]_{\Big[\phi_{i,j}^{(n)}\Big]}\ar[rrrd]^{\Big[\phi^{(n)}_i\Big]}\\
+            H_j^{(n)}\ar[rrr]_{\Big[\phi_j^{(n)}\Big]} & & &  H^n\Big(\lim\limits_{\ra}\Phi\Big)\\
+        }
+    \end{displaymath}
+    comutes. By the unicity of direct limits, we get that $H^n\Big(\lim\limits_{\ra}\Phi\Big)\cong\lim\limits_{\ra}H^{(n)}_i$.
+\end{proof}
+This theorem allows us to state an important corollary.
+\begin{cor}
+Let 
+\begin{displaymath}
+    \xymatrix{
+        \cdots\ar[r] & M^{\bullet_{n-1}}\ar[r] & M^{\bullet_n}\ar[r] & M^{\bullet_{n+1}}\ar[r] & \cdots
+    }
+\end{displaymath}
+be cochain complex of cochain complexes of $R$-modules. Then for $j\in\Z$ we have that 
+\begin{displaymath}
+    \lim\limits_{\ra n}H^j(M^{\bullet_n})\cong H^j(\lim\limits_{\ra n}M^{\bullet_n}).
+\end{displaymath}
+\end{cor}
+\begin{proof}
+    Noting that cochain complexes of $R$-modules can be seen as $\Z$-diagrams in the category of $R$-modules, the result is directly given by the previous theorem. 
+\end{proof}
+
+\begin{prop}\label{prop:cat_1}
+    Let $M$ be an $R$-module. Let $\{N_t\}_{t\in\Z}$ and $\{K_t\}_{t\in\Z}$ be two chains of increasing submodules of $M$ such that for each $t\in\Z$, there exists natural integers $c_t$ and $d_t$ such that 
+    \begin{displaymath}
+        N_t\subseteq K_{t+c_t}\ \mathrm{and}\ K_t\subseteq N_{t+d_t}.
+    \end{displaymath}
+    By considering the two families as a $\Z$-diagram with the structure morphisms being the inclusions, we get a functorial isomorphism
+    \begin{displaymath}
+        \lim\limits_{\ra t}K_t\cong\lim\limits_{\ra t}N_t.
+    \end{displaymath}
+\end{prop}
+\begin{proof}
+    By the Remark \ref{remark:union_limit}, we just have
+    \begin{displaymath}
+        \lim\limits_{\ra t}K_t\cong\bigcup_{t\in\Z}K_t=\bigcup_{t\in\Z}N_t\cong\lim\limits_{\ra t}N_t.
+    \end{displaymath}
+\end{proof}
+\begin{remark}
+    This proof is also valid in a more general case when considering a cofinal system on an Abelian category and replacing the inclusions by monomorphisms.
+\end{remark}
+\begin{cor}\label{cor:cat_2}
+    Let $\mathfrak{a}\subset R$ be an ideal and let $\{\mathfrak{a}_t\}_{t\in\N}$ be a decreasing chain of ideals such that for each $t$, there exists natural integers $c$ and $d$ such that 
+    \begin{displaymath}
+        \mathfrak{a}^{t+c}\subseteq\mathfrak{a}_t\ \mathrm{and}\ \mathfrak{a}_{t+d}\subseteq\mathfrak{a}^t.
+    \end{displaymath}
+    Then we have a functorial isomorphism such that
+    \begin{displaymath}
+        \lim\limits_{\ra t}\Ext^j_R(R/\mathfrak{a}_t,M)\cong H_{\mathfrak{a}}^j(M)
+    \end{displaymath}
+\end{cor}
+\begin{proof}
+    We use the fact that for each $t,j\in\N$ we have 
+    \begin{displaymath}
+        \mathfrak{a}^{t+c}\subseteq\mathfrak{a}_t\ \mathrm{and}\ \mathfrak{a}_{t+d}\subseteq\mathfrak{a}^t\implies
+        \begin{cases}
+            \Hom_R(R/\mathfrak{a}_t,I^j)\subseteq\Hom_ R(R/\mathfrak{a}^{t+c},I^j)\\
+            \Hom_R(R/\mathfrak{a}^t,I^j)\subseteq\Hom_R(R/\mathfrak{a}_{t+d},I^j)     
+        \end{cases}
+    \end{displaymath}
+    where $I^{\bullet}$ is an injective resolution of $M$. By the last proposition, this tells us that 
+    \begin{displaymath}
+        \lim\limits_{\ra t}\Hom_R(R/\mathfrak{a}^t,I^{\bullet})\cong\lim\limits_{\ra t}\Hom_r(R/\mathfrak{a}_t,I^{\bullet}).
+    \end{displaymath}
+    By the previous proposition, we finally get that 
+    \begin{align*}
+        \lim\limits_{\ra t}\Ext^j_R(R/\mathfrak{a}^t,M)\ &=\ \lim\limits_{\ra t}H^j(\Hom_R(R/\mathfrak{a}^t,I^{\bullet})\\
+        &\cong\ H^j(\lim\limits_{\ra t}\Hom_R(R/\mathfrak{a}_t,I^{\bullet})\\
+        &\cong\ \lim\limits_{\ra t}H^j(\Hom_R(R/\mathfrak{a}_t,I^{\bullet})\\
+        &=\ \lim\limits_{\ra t}\Ext^j_R(R/\mathfrak{a}_t,M).
+    \end{align*}
+\end{proof}
+\begin{prop}
+    Let $M$ be an $R$-module. Let $\{N_t\}_{t\in\Z}$ and $\{K_t\}_{t\in\Z}$ be two chains of increasing submodules of $M$ such that for each $t\in\Z$, there exists natural integers $c_t$ and $d_t$ such that 
+    \begin{displaymath}
+        N_t\subseteq K_{t+c_t}\ \mathrm{and}\ K_t\subseteq N_{t+d_t}.
+    \end{displaymath}
+    By considering the two families as a $\Z$-diagram with the structure morphisms being the inclusions, we get a functorial isomorphism
+    \begin{displaymath}
+        \lim\limits_{\ra t}K_t\cong\lim\limits_{\ra t}N_t
+    \end{displaymath}
+\end{prop}
+\begin{proof}
+    See Proposition \ref{prop:cat_1} for the proof.
+\end{proof}
+\begin{cor}\label{cor:cofinal_systems}
+    Let $\mathfrak{a}\subset R$ be an ideal and let $\{\mathfrak{a}_t\}_{t\in\N}$ be a decreasing chain of ideals such that for each $t$, there exists natural integers $c$ and $d$ such that 
+    \begin{displaymath}
+        \mathfrak{a}^{t+c}\subseteq\mathfrak{a}_t\ \mathrm{and}\ \mathfrak{a}_{t+d}\subseteq\mathfrak{a}^t.
+    \end{displaymath}
+    Then we have a functorial isomorphism such that
+    \begin{displaymath}
+        \lim\limits_{\ra t}\Ext^j_R(R/\mathfrak{a}_t,M)\cong H_{\mathfrak{a}}^j(M)
+    \end{displaymath}
+\end{cor}
+\begin{proof}
+    See Corollary \ref{cor:cat_2} for the proof.
+\end{proof}
+
+	
+\end{document}
